@@ -35,8 +35,16 @@ const updateSubscriptionSchema = Joi.object({
     }),
 });
 
+const userEmailSchema = Joi.object({
+  email: Joi.string().pattern(emailValidator).required().messages({
+    "string.base": "email field should be a string",
+    "string.email": "email field should be a valid email address",
+  }),
+});
+
 module.exports = {
   userSignupSchema,
   userSigninSchema,
   updateSubscriptionSchema,
+  userEmailSchema,
 };
